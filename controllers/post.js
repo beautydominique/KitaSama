@@ -2,7 +2,6 @@ const {Post, Profile, User} = require('../models/index')
 
 class Controller{
     static home(req, res){
-        let user
         Post.findAll(
             {
                 include: [
@@ -15,6 +14,27 @@ class Controller{
         })
         .catch((err)=>{
             res.send(err)
+        })
+    }
+
+    static addForm(req, res){
+        Post.findAll()
+        .then((data)=>{
+            res.render("addForm",{data})
+        })
+        .catch((err)=>{
+            res.send(err)
+        })
+    }
+
+    static postForm(req, res){
+        const {title, description, donation, isUrgent, imageURL} = req.body
+        Post.create({title, description, donation, isUrgent, imageURL})
+        .then(()=>{
+            res.redirect("/")
+        })
+        .catch((err)=>{
+            res.send((err))
         })
     }
 }
