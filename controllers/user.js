@@ -8,8 +8,8 @@ class Controller {
     }
 
     static postRegister(req, res){
-        const {name, username, password} = req.body
-        User.create({name, username, password})
+        const {name, username, password, role} = req.body
+        User.create({name, username, password, role})
         .then(()=>{
             res.redirect("/login")
         })
@@ -29,10 +29,16 @@ class Controller {
             if(user){
                 const validatePassword = compare(password, user.password)
                 if(validatePassword){
-                    
+                    res.redirect("/")           
+                } else{
+                    const err = `check your password`
+                    res.redirect(`/login?error=${err}`)
                 }
+            } else{
+                const err = `Invalid username`
+                res.redirect(`/login?error=${err}`)
+                
             }
-            res.redirect("/login")
         })
         .catch((err)=>{
             res.send(err)
