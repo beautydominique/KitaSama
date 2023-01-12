@@ -7,8 +7,10 @@
         <div class="flex justify-center h-screen items-center">
             <div class="inline-flex border-2 gap-[40px] flex-col p-[50px] rounded-xl">
                 <div class="flex justify-center text-center flex-col">
-                    <span class="font-bold text-[32px]">Kita = Sama.</span>
-                    <span class="">Register</span>
+                    <a href="/">
+                        <span class="font-bold text-[32px]">Kita = Sama.</span>
+                    </a>
+                    <span class="">Daftar</span>
                 </div>
                 <form class="flex flex-col gap-[30px]" method="post" action="/register">
                     <input class="w-full rounded-xl py-[15px]" type="text" name="name" placeholder="Name">
@@ -21,7 +23,8 @@
                     </select>
                     <input class="border-2 px-[60px] py-[15px] rounded-xl" type="submit" value="Daftar Sekarang">
                 </form>
-                <p>Sudah punya akun? Silahkan ke halaman <a href="/login">Register</a></p>
+                <p>Sudah punya akun? Silahkan ke halaman <a href="/login"><span
+                            class="font-bold cursor-pointer">Masuk</span></a></p>
 
             </div>
         </div>

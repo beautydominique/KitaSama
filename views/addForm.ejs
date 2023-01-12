@@ -1,45 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<%- include('./components/header') %>
 
-<body>
-    <nav>
-        <ul>
-            <li>Buat Penggalangan Dana Baru</li>
-        </ul>
-    </nav>
+    <body class="mx-[10%] border-2 h-screen">
+        <a href="/" class="flex gap-[20px] items-center top-0 px-[40px] py-[20px]">
+            <i class="w-[32px] h-auto" data-feather="arrow-left"></i>
+            <span class="text-lg font-bold">Kembali</span>
+        </a>
 
-    <% if (error) { %>
-        <% error.forEach(el => { %>
-            <p style="color: red;"><%= el %></p>
-        <%}) %> 
-    <% } %>
-    <form method="post" action="/post/add" >
+        <% if (error) { %>
+            <% error.forEach(el=> { %>
+                <p style="color: red;">
+                    <%= el %>
+                </p>
+                <%}) %>
+                    <% } %>
+                        <div class="flex flex-col p-[60px]">
+                            <p class="text-center py-[30px] text-2xl font-bold">Buat Penggalangan Dana</p>
+                            <form method="post" action="/post/add"
+                                class="flex justify-center px-[25%] flex-col gap-[30px]">
+                                <input class="w-full rounded-xl py-[15px]" type="text" name="title" placeholder="Title">
+                                <input class="w-full rounded-xl py-[15px]" type="text" name="description"
+                                    placeholder="Description">
+                                <input class="w-full rounded-xl py-[15px]" type="number" name="donation"
+                                    placeholder="Donation">
+                                <select class="w-full rounded-xl py-[15px]" name="isUrgent">
 
-        <input type="text" name="title" placeholder="Title">
-        <br><br>
-        <input type="text" name="description" placeholder="Description">
-        <br><br>
-        <input type="number" name="donation" placeholder="Donation">
-        <br><br>
-        <select name="isUrgent">
+                                    <option selected disabled>Apakah dana ini mendesak</option>
+                                    <option value="true">Mendesak</option>
+                                    <option value="false">Tidak Mendesak</option>
 
-            <option selected disabled>Apakah dana ini mendesak</option>
-                <option value="true">Mendesak</option>
-                <option value="false">Tidak Mendesak</option>
+                                </select>
+                                <input class="w-full rounded-xl py-[15px]" type="text" name="imageURL"
+                                    placeholder="Image URL">
+                                <input class="cursor-pointer border-2 px-[60px] py-[15px] rounded-xl" type="submit"
+                                    value="Buat Penggalangan Baru">
+                            </form>
+                        </div>
 
-        </select>
-        <br><br>
-        <input type="text" name="imageURL" placeholder="image URL">
-        <br><br>
-        <input type="submit" value="Buat Penggalangan Baru">
-    </form>
-</body>
+                        <script>
+                            feather.replace()
+                        </script>
+    </body>
 
 </html>
