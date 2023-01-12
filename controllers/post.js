@@ -1,13 +1,18 @@
-const { Post, Profile, User } = require('../models/index')
+const { Post, Profile, User, Category } = require('../models/index')
 const { getIDR } = require("../helpers/bcyrpt")
 
 class Controller {
     static home(req, res) {
         let title = req.query.title
+        let dataPost
         Post.searchTitle(title)
             .then((data) => {
+                dataPost = data
+                return Category.findAll()
+            })
+            .then((categories) => {
                 let isLoggedIn = req.session.userId ? true : false
-                res.render('home', { data, isLoggedIn, getIDR })
+                res.render('home', { data: dataPost, categories, isLoggedIn, getIDR })
             })
             .catch((err) => {
                 res.send(err)
