@@ -3,19 +3,26 @@
 
 <%- include('./components/header.ejs') %>
 
-  <body class="mx-[10%] border-2">
-    <header class="py-[20px] px-[40px] flex justify-between">
-      <span class="font-bold text-[20px]">Kita = Sama.</span>
-      <ul class="flex gap-[20px]">
-        <li>List Donasi</li>
-        <li>Kategori</li>
-      </ul>
-      <div class="flex gap-[20px]">
-        <span>Register</span>
-        <span>Masuk</span>
-        <span class="text-black"><i data-feather="user"></i></span>
-      </div>
-    </header>
+
+<body class="mx-[10%] border-2">
+  <header class="py-[20px] px-[40px] flex justify-between">
+    <span class="font-bold text-[20px]">Kita = Sama.</span>
+    <ul class="flex gap-[20px]">
+      <li>List Donasi</li>
+      <li>Kategori</li>
+    </ul>
+    
+    <div class="flex gap-[20px]">
+      <% if (isLoggedIn){%>
+        <span>Log Out</span>
+        <%} else{%>
+          <span>Register</span>
+          <span>Masuk</span>
+        <%}%>
+      <span class="text-black"><i data-feather="user"></i></span>
+    </div>
+  </header>
+
 
     <% console.log(data) %>
       <main class="grid grid-cols-2 p-[60px] gap-[60px]">
@@ -35,17 +42,14 @@
                       <%= el.description%>
                         <% } %>
               </span>
-              <div class="flex flex-col gap-[20px]">
-                <span class="font-medium">
-                  <%= el.User.name %>
-                </span>
-                <div class="flex justify-between">
-                  <div class="flex flex-col">
-                    <span>Dibutuhkan</span>
-                    <span class="font-bold text-xl">
-                      <span>Rp <%= el.donation %></span>
-                    </span>
-                  </div>
+
+              <div class="flex justify-between">
+                <div class="flex flex-col">
+                  <span>Dibutuhkan</span>
+                  <span class="font-bold text-xl">
+                    <span><%= EmployeeFee(el.donation) %></span>
+                  </span>
+
                 </div>
               </div>
               <div class="flex">

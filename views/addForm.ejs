@@ -14,7 +14,14 @@
             <li>Buat Penggalangan Dana Baru</li>
         </ul>
     </nav>
-    <form method="post" action="/post/add">
+
+    <% if (error) { %>
+        <% error.forEach(el => { %>
+            <p style="color: red;"><%= el %></p>
+        <%}) %> 
+    <% } %>
+    <form method="post" action="/post/add" >
+
         <input type="text" name="title" placeholder="Title">
         <br><br>
         <input type="text" name="description" placeholder="Description">
@@ -22,9 +29,11 @@
         <input type="number" name="donation" placeholder="Donation">
         <br><br>
         <select name="isUrgent">
-            <option selected>Apakah dana ini mendesak</option>
-            <option value="true">Mendesak</option>
-            <option value="false">Tidak Mendesak</option>
+
+            <option selected disabled>Apakah dana ini mendesak</option>
+                <option value="true">Mendesak</option>
+                <option value="false">Tidak Mendesak</option>
+
         </select>
         <br><br>
         <input type="text" name="imageURL" placeholder="image URL">

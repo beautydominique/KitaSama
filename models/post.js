@@ -14,12 +14,46 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Post.init({
-    title: DataTypes.STRING,
-    description: DataTypes.STRING,
-    donation: DataTypes.INTEGER,
-    isClose: DataTypes.BOOLEAN,
+    title:{
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate:{
+        notNull: {
+          msg: "Fill the title"
+        },
+        notEmpty:{
+          msg:"Title cannot be empty"
+        }
+      }
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate:{
+        notNull: {
+          msg: "Fill the description"
+        },
+        notEmpty:{
+          msg:"Description cannot be empty"
+        }
+      }
+    },
+    donation: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate:{
+        notNull: {
+          msg: "Fill the donation"
+        },
+        notEmpty:{
+          msg:"Donation cannot be empty"
+        }
+      }
+    },
+    isClose:DataTypes.BOOLEAN,
+
     isUrgent: DataTypes.BOOLEAN,
-    imageURL: DataTypes.STRING,
+    imageURL:  DataTypes.STRING,
     UserId: DataTypes.INTEGER
   }, {
     sequelize,

@@ -1,6 +1,10 @@
 const bcrypt = require("bcryptjs")
 
 
+function EmployeeFee (salary){
+    let idr = new Intl.NumberFormat("id-ID", {style: "currency", currency: "IDR"}).format(salary);
+    return idr
+}
 
 module.exports = {
     hash: (password) => {
@@ -8,5 +12,5 @@ module.exports = {
     },
     compare: (password, hash) => {
         return bcrypt.compareSync(password, hash)
-    }
+    }, EmployeeFee
 }
