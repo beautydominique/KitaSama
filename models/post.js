@@ -19,7 +19,8 @@ module.exports = (sequelize, DataTypes) => {
     donation: DataTypes.INTEGER,
     isClose: DataTypes.BOOLEAN,
     isUrgent: DataTypes.BOOLEAN,
-    imageURL: DataTypes.STRING
+    imageURL: DataTypes.STRING,
+    UserId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Post',

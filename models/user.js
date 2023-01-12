@@ -2,6 +2,9 @@
 const {
   Model
 } = require('sequelize');
+const bcrypt = require("bcrypt");
+const { hash } = require('../helpers/bcyrpt');
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -18,10 +21,13 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     username: DataTypes.STRING,
     password: DataTypes.STRING,
-    role: DataTypes.STRING
+    role: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'User',
   });
+  User.beforeCreate(user=>{
+    user.password = hash(user.password)
+  })
   return User;
 };
