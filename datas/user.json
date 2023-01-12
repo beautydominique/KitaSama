@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Aleeyah Sahra Dorm",
+        "username": "Aleyahsd",
+        "password": "menujupuncak",
+        "role": "admin"
+
+    },
+    {
+        "name": "Haruka Mandce",
+        "username": "mandceH",
+        "password": "gemilangcahaya",
+        "role": "user"
+
+    },
+    {
+        "name": "Dia Cinta Bisa",
+        "username": "dcbisa",
+        "password": "mengukircinta",
+        "role": "user"
+    }
+]

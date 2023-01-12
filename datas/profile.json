@@ -1,0 +1,27 @@
+[
+    {
+        "fondationName": "Yayasan Peduli",
+        "email": "yayasanpeduli@gmail.com",
+        "address": "Jl. Kayu Putih IX F No.13",
+        "bank": "Mandori",
+        "bankAccount": 123456,
+        "UserId": 1
+    },
+    {
+        "fondationName":"Keluarga Haruka",
+        "email":"harukamandche@gmail.com",
+        "address": "Jl. Kemang Raya No.14", 
+        "bank": "BACA",
+        "bankAccount": 45678,       
+        "UserId": 2
+    },
+    {
+        "fondationName":"Keluarga Dia",
+        "email":"diacintabisa@gmail.com",
+        "address": "Jl. Kebayoran Raya No.33", 
+        "bank": "BeRI",
+        "bankAccount": 8901,      
+        "UserId": 3
+    }
+
+]

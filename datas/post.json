@@ -1,0 +1,30 @@
+[
+    {
+        "title": "Bantu Anak Gunung Semeru Belajar",
+        "description": "Anak gunung semeru merupakan anak-anak yang tinggal di daerah kabupaten Bagul, untuk saat ini sangat susah bagi mereka untuk mendapatkan ilmu pelajaran diakrenakan akses yang susah dilewati",
+        "donation": 200000000,
+        "isClose": false,
+        "isUrgent": true,
+        "imageURL":"https://img.freepik.com/free-photo/back-view-friends-outdoors_23-2149479928.jpg?w=2000&t=st=1673490329~exp=1673490929~hmac=abb3cd8221e37c03852840861590cc9973385f6615a8f0c133de70dcebfc5da0",
+        "UserId": 1
+    },
+
+    {
+        "title": "Bantu Zahra Melawan Kanker",
+        "description": "Zahra, seorang anak berusia 5 tahun harus melewati masa anak-2anaknya demi melawan kanker kulit",
+        "donation": 500000000,
+        "isClose": true,
+        "isUrgent": true,
+        "imageURL":"https://img.freepik.com/free-photo/sick-girl-blowing-nose_23-2148526733.jpg?w=1380&t=st=1673490528~exp=1673491128~hmac=037763b90ad399c21239c2eb2fe055b36d2e57a153132a16a8649cd3ae40de65",
+        "UserId": 2
+    },
+    {
+        "title": "Kirim 50rb Paket Makanan Korban Gempa Cianjur",
+        "description": "Bantu korban gempa cianjur dengan mengirim 50rb makanan",
+        "donation": 250000000,        "isClose": true,
+        "isUrgent": true,
+        "imageURL":"https://img.freepik.com/free-photo/person-getting-some-street-food_23-2149004354.jpg?w=2000&t=st=1673490697~exp=1673491297~hmac=2b431dbe282143f63c9928ad617e0a5365e7040362ed30d4179f5abee3027a1c",
+        "UserId": 3
+    }
+
+]
