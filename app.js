@@ -38,6 +38,7 @@ app.post("/post/edit/:id", controllerPost.postEdit)
 app.get("/post/add", controllerPost.addForm)
 app.post("/post/add", controllerPost.postForm)
 app.get("/post/delete/:id", controllerPost.destroyForm)
+app.get("/post/checkout/:id", controllerPost.checkout)
 
 
 app.listen(port, () => {

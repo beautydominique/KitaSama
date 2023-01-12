@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./components/header.ejs') %>
+
+  <body class="mx-[10%]">
+    <div class="flex justify-center h-screen items-center">
+      <div class="inline-flex border-2 gap-[40px] flex-col p-[50px] rounded-xl">
+        <div class="flex gap-[20px] justify-center text-center flex-col">
+          <a href="/">
+            <span class="font-bold text-[32px]">Kita = Sama.</span>
+          </a>
+          <div class="flex justify-center">
+            <img src="https://www.imgonline.com.ua/examples/qr-code-url.png" width="100" height="100" alt="">
+          </div>
+          <div class="flex text-center flex-col gap-[5px]">
+            <p class="font-bold">Atas nama <%= data.Profile.fondationName %>
+                <div class="flex gap-[10px] justify-center ">
+                  <p class="font-medium">Bank <%= data.Profile.bank %>
+                      <p>
+                        <%= data.Profile.bankAccount %>
+                      </p>
+                </div>
+          </div>
+          <span class="">Terimakasih telah berniat baik</span>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

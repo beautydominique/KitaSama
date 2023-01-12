@@ -89,7 +89,7 @@ class Controller {
 
     static destroyForm(req, res) {
         const { id } = req.params
-        console.log(id, '<<<<<<<<<<');
+        // console.log(id, '<<<<<<<<<<');
         Post.destroy({
             where: {
                 id
@@ -101,6 +101,23 @@ class Controller {
             })
             .catch((err) => {
                 console.log(err);
+                res.send(err)
+            })
+    }
+
+    static checkout(req, res) {
+        const { id } = req.params
+        User.findOne({
+            include: Profile,
+            where: {
+                id
+            }
+        })
+            .then((data) => {
+                // res.send(data)
+                res.render('./postCheckout', { data })
+            })
+            .catch((err) => {
                 res.send(err)
             })
     }
