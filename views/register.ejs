@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <nav>
 
-            <h1>Register</h1>
+<%- include('./components/header.ejs') %>
 
-    </nav>
-    <form method="post" action="/register" >
-        <input type="text" name="name" placeholder="name">
-        <br><br>
-        <input type="text" name="username" placeholder="username">
-        <br><br>
-        <input type="text" name="password" placeholder="password">
-        <br><br>
-        <select name="role">
-            <option selected disabled>-- Select Role --</option>
-                <option value="admin">Admin</option>
-                <option value="user">User</option>
-        </select>
-        <br><br>
-        <input type="submit" value="Daftar Sekarang">
-    </form>
-</body>
+    <body class="mx-[10%]">
+        <div class="flex justify-center h-screen items-center">
+            <div class="inline-flex border-2 gap-[40px] flex-col p-[50px] rounded-xl">
+                <div class="flex justify-center text-center flex-col">
+                    <span class="font-bold text-[32px]">Kita = Sama.</span>
+                    <span class="">Register</span>
+                </div>
+                <form class="flex flex-col gap-[30px]" method="post" action="/register">
+                    <input class="w-full rounded-xl py-[15px]" type="text" name="name" placeholder="Name">
+                    <input class="w-full rounded-xl py-[15px]" type="text" name="username" placeholder="Username">
+                    <input class="w-full rounded-xl py-[15px]" type="text" name="password" placeholder="Password">
+                    <select class="w-full rounded-xl py-[15px]" name="role">
+                        <option selected disabled>-- Select Role --</option>
+                        <option value="admin">Admin</option>
+                        <option value="user">User</option>
+                    </select>
+                    <input class="border-2 px-[60px] py-[15px] rounded-xl" type="submit" value="Daftar Sekarang">
+                </form>
+                <p>Sudah punya akun? Silahkan ke halaman <a href="/login">Register</a></p>
+
+            </div>
+        </div>
+    </body>
+
 </html>

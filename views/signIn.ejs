@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <nav>
-            <h1>Sign In</h1>
-    </nav>
-    <% if(error){%>
-        <p> <%=error%></p>
-     <%}%>
-    <form method="post" action="/login" >
-        <input type="text" name="username" placeholder="username">
-        <br><br>
-        <input type="text" name="password" placeholder="password">
-        <br><br>
-        <input type="submit" value="Masuk">
-    </form>
-    <p>Belum punya akun? Silahkan ke halaman <a href="/register">Register</a></p>
-</body>
+
+<%- include('./components/header') %>
+
+    <body class="mx-[10%]">
+        <div class="flex justify-center h-screen items-center">
+            <div class="inline-flex border-2 gap-[40px] flex-col p-[50px] rounded-xl">
+                <div class="flex justify-center flex-col text-center">
+                    <span class="font-bold text-[32px]">Kita = Sama.</span>
+                    <span class="">Login</span>
+                </div>
+                <% if(error){%>
+                    <p>
+                        <%=error%>
+                    </p>
+                    <%}%>
+                        <form method="post" action="/login" class="flex flex-col gap-[30px]">
+                            <input class="w-full rounded-xl py-[15px]" type="text" name="username"
+                                placeholder="Username">
+                            <input class="w-full rounded-xl py-[15px]" type="text" name="password"
+                                placeholder="Password">
+                            <input class="border-2 px-[60px] py-[15px] rounded-xl" type="submit" value="Masuk">
+                        </form>
+                        <p>Belum punya akun? Silahkan ke halaman <a href="/register">Register</a></p>
+            </div>
+        </div>
+    </body>
+
 </html>

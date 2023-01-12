@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./components/header') %>
+
+  <body class="mx-[10%] border-2 h-screen">
+    <div class="relative mt-[-2px]">
+      <img class="h-[400px] w-full object-cover" src="<%= data.imageURL %>" alt="image-<%= data.title %> ">
+      <a href="/" class="flex gap-[20px] items-center absolute top-0 text-white px-[40px] py-[20px]">
+        <i class="w-[32px] h-auto" data-feather="arrow-left"></i>
+        <span class="text-lg font-bold">Kembali</span>
+      </a>
+    </div>
+    <div class="flex flex-col p-[60px] gap-[20px]">
+      <span class="text-[32px] font-bold">
+        <%= data.title %>
+      </span>
+      <div class="flex flex-col gap-[10px]">
+        <span class="text-[20px]">Dibutuhkan</span>
+        <span class="font-bold text-2xl">
+          Rp <%= data.donation %>
+        </span>
+      </div>
+      <span class="text-[20px]">
+        <%= data.User.name %>
+      </span>
+      <article class="flex flex-col gap-[20px]">
+        <h1 class="font-bold text-2xl">Cerita Penggalang</h1>
+        <p class="text-[20px]">
+          <%= data.description %>
+        </p>
+      </article>
+    </div>
+
+    <script>
+      feather.replace()
+    </script>
+  </body>
+
+</html>
