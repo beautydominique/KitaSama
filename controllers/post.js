@@ -69,7 +69,7 @@ class Controller {
                 console.log(err);
                 res.send(err)
             })
-
+    }        
     static edit(req, res){
         const id = req.params.id
         Post.findByPk(id)

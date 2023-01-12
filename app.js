@@ -30,6 +30,7 @@ app.post("/login", controllerUser.postSignIn)
 app.get("/",controllerPost.home)
 app.get("/post/read/:id",controllerPost.readPost)
 app.use(aunthentication)
+app.get("/logout", controllerUser.logout)
 
 app.use(authorization)
 app.get("/post/edit/:id", controllerPost.edit)
