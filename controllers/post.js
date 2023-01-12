@@ -52,6 +52,24 @@ class Controller {
             })
     }
 
+
+    static readPost(req, res) {
+        const { id } = req.params
+        Post.findOne({
+            include: User,
+            where: {
+                id
+            }
+        })
+            .then((data) => {
+                // res.send(data)
+                res.render('./seeDetail', { data })
+            })
+            .catch((err) => {
+                console.log(err);
+                res.send(err)
+            })
+
     static edit(req, res){
         const id = req.params.id
         Post.findByPk(id)
@@ -74,6 +92,7 @@ class Controller {
         .catch((err)=>{
             res.send(err)
         })
+
     }
 }
 

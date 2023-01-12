@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <nav>
         <ul>
             <li>Buat Penggalangan Dana Baru</li>
         </ul>
     </nav>
+
     <% if (error) { %>
         <% error.forEach(el => { %>
             <p style="color: red;"><%= el %></p>
         <%}) %> 
     <% } %>
     <form method="post" action="/post/add" >
+
         <input type="text" name="title" placeholder="Title">
         <br><br>
         <input type="text" name="description" placeholder="Description">
@@ -25,9 +29,11 @@
         <input type="number" name="donation" placeholder="Donation">
         <br><br>
         <select name="isUrgent">
+
             <option selected disabled>Apakah dana ini mendesak</option>
                 <option value="true">Mendesak</option>
                 <option value="false">Tidak Mendesak</option>
+
         </select>
         <br><br>
         <input type="text" name="imageURL" placeholder="image URL">
@@ -35,4 +41,5 @@
         <input type="submit" value="Buat Penggalangan Baru">
     </form>
 </body>
+
 </html>
