@@ -3,20 +3,13 @@ const {EmployeeFee} = require("../helpers/bcyrpt")
 
 class Controller {
     static home(req, res) {
-        Post.findAll(
-            {
-                include: [
-                    { model: User, include: [Profile] }
-                ]
-            }
-        )
+        let title = req.query.title
+        Post.searchTitle(title)
             .then((data) => {
-                // res.send(data)
                 let isLoggedIn = req.session.userId ? true : false
-                res.render('./home', { data, isLoggedIn , EmployeeFee})
+                res.render('home', { data, isLoggedIn , EmployeeFee})
             })
             .catch((err) => {
-                console.log(err);
                 res.send(err)
             })
     }
@@ -66,7 +59,7 @@ class Controller {
                 res.render('./seeDetail', { data })
             })
             .catch((err) => {
-                console.log(err);
+
                 res.send(err)
             })
     }        
@@ -74,7 +67,6 @@ class Controller {
         const id = req.params.id
         Post.findByPk(id)
         .then((data)=>{
-            console.log(data);
             res.render("editForm", {data})
         })
         .catch((err)=>{
