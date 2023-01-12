@@ -22,8 +22,12 @@
       <span class="text-black"><i data-feather="user"></i></span>
     </div>
   </header>
-
-
+  <div>
+    <form action="/" method="get">
+      <input type="search" name="title">
+      <button type="submit">search</button>
+  </form>
+  </div>
     <% console.log(data) %>
       <main class="grid grid-cols-2 p-[60px] gap-[60px]">
         <% data.forEach(el=> { %>

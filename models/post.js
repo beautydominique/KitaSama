@@ -1,4 +1,5 @@
 'use strict';
+const {Op} = require("sequelize")
 const {
   Model
 } = require('sequelize');
@@ -11,6 +12,17 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Post.belongsTo(models.User)
+    }
+    static searchTitle(title){
+      const option = {
+        include: {all:true}
+      }
+      if(title){
+      option.where = {title:{[Op.iLike]:`%${title}%`}}
+      } else{
+        option
+      }
+      return this.findAll(option)
     }
   }
   Post.init({
@@ -54,6 +66,7 @@ module.exports = (sequelize, DataTypes) => {
 
     isUrgent: DataTypes.BOOLEAN,
     imageURL:  DataTypes.STRING,
+      
     UserId: DataTypes.INTEGER
   }, {
     sequelize,
