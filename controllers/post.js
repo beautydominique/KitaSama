@@ -1,5 +1,5 @@
 const { Post, Profile, User } = require('../models/index')
-const {EmployeeFee} = require("../helpers/bcyrpt")
+const { getIDR } = require("../helpers/bcyrpt")
 
 class Controller {
     static home(req, res) {
@@ -7,7 +7,7 @@ class Controller {
         Post.searchTitle(title)
             .then((data) => {
                 let isLoggedIn = req.session.userId ? true : false
-                res.render('home', { data, isLoggedIn , EmployeeFee})
+                res.render('home', { data, isLoggedIn, getIDR })
             })
             .catch((err) => {
                 res.send(err)
@@ -17,7 +17,7 @@ class Controller {
     static addForm(req, res) {
         const reqError = req.query.errors
         let error
-        if(reqError){
+        if (reqError) {
             error = reqError.split(',')
         }
         Post.findAll()
@@ -36,10 +36,10 @@ class Controller {
                 res.redirect("/")
             })
             .catch((err) => {
-                if(err.name === 'SequelizeValidationError'){
-                    const data = err.errors.map((el)=>el.message)
+                if (err.name === 'SequelizeValidationError') {
+                    const data = err.errors.map((el) => el.message)
                     res.redirect(`/post/add?errors=${data}`)
-                } else{
+                } else {
                     res.send(err)
                 }
             })
@@ -56,35 +56,53 @@ class Controller {
         })
             .then((data) => {
                 // res.send(data)
-                res.render('./seeDetail', { data })
+                res.render('./seeDetail', { data, getIDR })
             })
             .catch((err) => {
 
                 res.send(err)
             })
-    }        
-    static edit(req, res){
+    }
+    static edit(req, res) {
         const id = req.params.id
         Post.findByPk(id)
-        .then((data)=>{
-            res.render("editForm", {data})
-        })
-        .catch((err)=>{
-            res.send((err))
-        })
+            .then((data) => {
+                res.render("editForm", { data })
+            })
+            .catch((err) => {
+                res.send((err))
+            })
     }
 
-    static postEdit(req, res){
+    static postEdit(req, res) {
         const id = req.params.id
-        const {title, description, donation, imageURL} = req.body
-        Post.update({title, description, donation, imageURL}, {where: {id}})
-        .then(()=>{
-            res.redirect("/")
-        })
-        .catch((err)=>{
-            res.send(err)
-        })
+        const { title, description, donation, imageURL } = req.body
+        Post.update({ title, description, donation, imageURL }, { where: { id } })
+            .then(() => {
+                res.redirect("/")
+            })
+            .catch((err) => {
+                res.send(err)
+            })
 
+    }
+
+    static destroyForm(req, res) {
+        const { id } = req.params
+        console.log(id, '<<<<<<<<<<');
+        Post.destroy({
+            where: {
+                id
+            }
+        })
+            .then((result) => {
+                // res.send(id)
+                res.redirect('/')
+            })
+            .catch((err) => {
+                console.log(err);
+                res.send(err)
+            })
     }
 }
 
