@@ -2,7 +2,7 @@
 const { compare } = require("../helpers/bcyrpt")
 const {User} = require("../models")
 
-const Notiflix = require("notiflix")
+
 
 class Controller {
     static register(req, res){
@@ -24,7 +24,7 @@ class Controller {
         const {error} = req.query
         // console.log(Notiflix.Notify.failure('test'));
 
-        res.render("signIn", {error, Failure: Notiflix.Notify.failure})
+        res.render("signIn", {error})
     }
 
     static postSignIn(req, res){
@@ -43,6 +43,16 @@ class Controller {
         .catch((err)=>{
             console.log(err);
             res.send(err)
+        })
+    }
+
+    static logout(req, res){
+        req.session.destroy((err)=>{
+            if(err){
+                res.send(err)
+            } else{
+                res.redirect("/")
+            }
         })
     }
 }
