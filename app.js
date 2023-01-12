@@ -2,15 +2,17 @@ const express = require("express")
 const app = express()
 const port = 3000
 const controllerPost = require("./controllers/post")
-const ControllerUser = require("./controllers/user")
+const controllerUser = require("./controllers/user")
+// const aunthentication = require("./middlewares/authentication")
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({extended:true}))
 
-app.get("/", controllerPost.home)
+app.get("/",controllerPost.home)
 app.get("/post/add", controllerPost.addForm)
 app.post("/post/add", controllerPost.postForm)
-app.get("/register", ControllerUser.register)
+app.get("/register", controllerUser.register)
+app.get("/login", controllerUser.signIn)
 
 
 app.listen(port, () => {
