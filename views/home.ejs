@@ -20,16 +20,21 @@
   <script src="https://unpkg.com/feather-icons"></script>
 </head>
 
-<body class="mx-[340px] border-2">
+<body class="mx-[10%] border-2">
   <header class="py-[20px] px-[40px] flex justify-between">
     <span class="font-bold text-[20px]">Kita = Sama.</span>
     <ul class="flex gap-[20px]">
       <li>List Donasi</li>
       <li>Kategori</li>
     </ul>
+    
     <div class="flex gap-[20px]">
-      <span>Register</span>
-      <span>Masuk</span>
+      <% if (isLoggedIn){%>
+        <span>Log Out</span>
+        <%} else{%>
+          <span>Register</span>
+          <span>Masuk</span>
+        <%}%>
       <span class="text-black"><i data-feather="user"></i></span>
     </div>
   </header>
@@ -60,7 +65,7 @@
                 <div class="flex flex-col">
                   <span>Dibutuhkan</span>
                   <span class="font-bold text-xl">
-                    <span>Rp <%= el.donation %></span>
+                    <span><%= EmployeeFee(el.donation) %></span>
                   </span>
                 </div>
               </div>

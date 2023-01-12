@@ -31,7 +31,8 @@ app.get("/",controllerPost.home)
 app.use(aunthentication)
 
 app.use(authorization)
-
+app.get("/post/edit/:id", controllerPost.edit)
+app.post("/post/edit/:id", controllerPost.postEdit)
 app.get("/post/add",  controllerPost.addForm)
 app.post("/post/add",  controllerPost.postForm)
 
