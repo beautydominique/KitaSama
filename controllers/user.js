@@ -19,28 +19,25 @@ class Controller {
     }
 
     static signIn(req, res){
-        res.render("signIn")
+        const {error} = req.query
+        res.render("signIn", {error})
     }
 
     static postSignIn(req, res){
         const {username, password} = req.body
         User.findOne({where: {username: username}})
         .then((user)=>{
-            if(user){
-                const validatePassword = compare(password, user.password)
-                if(validatePassword){
-                    res.redirect("/")           
-                } else{
-                    const err = `check your password`
-                    res.redirect(`/login?error=${err}`)
-                }
-            } else{
-                const err = `Invalid username`
-                res.redirect(`/login?error=${err}`)
-                
+            if(!user || !compare(password, user.password)) {
+                const error = `Invalid username/password!`
+                res.redirect(`/login?error=${error}`)
+            } else {
+                req.session.userId = user.id
+                req.session.userRole = user.role
+                res.redirect('/')
             }
         })
         .catch((err)=>{
+            console.log(err);
             res.send(err)
         })
     }
