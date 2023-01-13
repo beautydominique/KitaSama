@@ -38,6 +38,25 @@
       </form>
     </div>
     <%# console.log(data) %>
+    <% if (isLoggedIn){%>
+      <a href="/post/add">
+        <div class="flex px-[60px] pt-[60px]">
+          <div class="inline-flex px-[60px] py-[20px] border-2 rounded-xl">
+            <p>Buat Donasi</p>
+          </div>
+        </div>
+      </a>
+      <%} else{%>
+        <%}%>
+    
+      <!-- <a href="/post/add">
+        <div class="flex px-[60px] pt-[60px]">
+          <div class="inline-flex px-[60px] py-[20px] border-2 rounded-xl">
+            <p>Buat Donasi</p>
+          </div>
+        </div>
+      </a> -->
+
       <main class="grid grid-cols-2 p-[60px] gap-[60px]">
         <% data.forEach(el=> { %>
           <div class="flex border-2 rounded-xl relative">

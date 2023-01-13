@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+
+<%- include('./components/header.ejs') %>
+
+
+  <body class="mx-[10%] border-2">
+    <header class="py-[20px] px-[40px] flex justify-between">
+      <a href="/">
+        <span class="font-bold text-[20px]">Kita = Sama.</span>
+      </a>
+      <ul class="flex gap-[20px]" class="relative" x-data="{ open: false }">
+        <li><a href="/">List Donasi</a></li>
+        <li class="cursor-pointer" x-on:click="open = ! open">Kategori</li>
+        <div x-show="open" class=" absolute top-[70px] flex flex-col bg-white border-2 rounded-xl z-40 ml-[90px]">
+          <% categories.forEach(category=> { %>
+            <li class="pl-[20px] pr-[40px] py-[20px]">
+              <%= category.name %>
+            </li>
+            <% }) %>
+        </div>
+      </ul>
+
+      <div class="flex gap-[20px]">
+        <% if (isLoggedIn){%>
+          <a href="/logout" class="cursor-pointer"><span>Log Out</span></a>
+          <%} else{%>
+            <a href="/register" class="cursor-pointer">Register</a>
+            <a href="/login" class="cursor-pointer">Masuk</a>
+            <%}%>
+              <span class="text-black"><i data-feather="user"></i></span>
+      </div>
+    </header>
+    <div class="flex justify-center">
+      <form action="/" method="get" class="flex gap-[20px]">
+        <input type="search" name="title" class="rounded-xl" placeholder="Cari judul disini ..">
+        <button type="submit" class="px-[40px] border-2 py-[15px] rounded-xl">Cari</button>
+      </form>
+    </div>
+    <%# console.log(data) %>
+      <% if (isLoggedIn){%>
+        <a href="/post/add">
+          <div class="flex px-[60px] pt-[60px]">
+            <div class="inline-flex px-[60px] py-[20px] border-2 rounded-xl">
+              <p>Buat Donasi</p>
+            </div>
+          </div>
+        </a>
+        <%} else{%>
+
+          <%}%>
+
+
+            <main class="grid grid-cols-2 p-[60px] gap-[60px]">
+              <% data.forEach(el=> { %>
+                <div class="flex border-2 rounded-xl relative">
+                  <div class="w-1/2 h-auto rounded-xl overflow-hidden border">
+                    <img class="h-full w-full object-cover" src="<%= el.imageURL %> " alt="">
+                  </div>
+                  <div class="p-[20px] flex flex-col gap-[20px] w-1/2">
+                    <span class="font-[700] text-md">
+                      <%= el.title %>
+                    </span>
+                    <span class="text-sm">
+                      <%= el.truncate(el.description, 13) %>
+                    </span>
+
+                    <div class="flex justify-between">
+                      <div class="flex flex-col">
+                        <span>Dibutuhkan</span>
+                        <span class="font-bold text-xl">
+                          <span>
+                            <%= getIDR(el.donation) %>
+                          </span>
+                        </span>
+
+                      </div>
+                    </div>
+                    <div class="flex">
+                      <a href="/post/read/<%= el.id %> "
+                        class="cursor-pointer inline-flex rounded-lg px-[20px] py-[10px] border-2">Selengkapnya</a>
+                    </div>
+                  </div>
+                  <div class="bottom-0 right-[-35px] absolute bg-white ">
+                    <% if (isLoggedIn){%>
+                      <div class="flex flex-col gap-[20px]">
+                        <a href="/post/edit/<%= el.id %>">
+                          <div class="p-[20px] border-2 rounded-xl">
+                            <i data-feather="edit-2"></i>
+                          </div>
+                        </a>
+                        <a href="/post/delete/<%= el.id %>">
+                          <div class="p-[20px] border-2 rounded-xl">
+                            <i data-feather="trash-2"></i>
+                          </div>
+                        </a>
+                      </div>
+                      <%} else{%>
+                        <%}%>
+
+                  </div>
+                </div>
+                <% }) %>
+            </main>
+
+            <script>
+              feather.replace()
+            </script>
+  </body>
+
+</html>
